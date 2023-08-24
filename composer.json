@@ -2,8 +2,7 @@
     "name": "blanchar/note-app-revision",
     "autoload": {
         "psr-4": {
-            "Blanchar\\NoteAppRevision\\": "src/",
-            "Core\\": "Core/"
+            "Blanchar\\NoteAppRevision\\": "src/"
         }
     },
     "authors": [
