@@ -1,4 +1,4 @@
-<?php views_path('partials/header.php'); ?>
+<?php views_path('partials/header.view.php'); ?>
 <main>
 	<h1>Voici toutes les notes</h1>
 	<ul>

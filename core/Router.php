@@ -20,6 +20,10 @@ class Router
 	{
 		$route = array_values(array_filter($this->routes, fn($r) => $r['uri'] === $uri && $r['method'] = strtoupper($method)));
 
+		if (!$route){
+			Response::abort();
+		}
+
 		$controller = new $route[0]['controller'][0]();
 		$controllerMethod = $route[0]['controller'][1];
 		call_user_func([$controller, $controllerMethod]);

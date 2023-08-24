@@ -14,5 +14,5 @@ function base_path(string $path) : string{
 
 function views_path (string $path, $params = []) {
 	extract($params);
-	require BASE_PATH . '/views/' . $path;
+	require BASE_PATH . 'views/' . $path;
 }
