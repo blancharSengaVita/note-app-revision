@@ -12,7 +12,3 @@ define('ENV_FILE', require base_path('env.local.ini'));
 
 //Demander aux profs un exemple de ce qui ce passe quand on charge pas le fichier autoload : reponse on devra les inclure manuellement c'est relou.
 
-//Etape de creation d'un namespace et d'une classe
-//Création de la classe avec un namespace
-//Ajout du namespace dans le fichier "composer.json"
-//Exécution de composer dump-autoload
