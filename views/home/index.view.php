@@ -2,7 +2,6 @@
 <main>
 	<h1>Accueil</h1>
 	<p><?=$tagline?></p>
-
 </main>
 </body>
 </html>

@@ -3,8 +3,10 @@
 namespace Core;
 
 use Exception;
+use http\Params;
 use PDO;
 use PDOStatement;
+use stdClass;
 
 class Database
 {
@@ -20,19 +22,28 @@ class Database
 			((!empty($settings['database']['port'])) ? (';port=' . $settings['database']['port']) : '') .
 			';dbname=' . $settings['database']['schema'];
 
-		$this->connection = new PDO($dsn, $settings['database']['username'], $settings['database']['password']);
+		$this->connection = new PDO($dsn, $settings['database']['username'], $settings['database']['password'], [
+			PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+			PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ,
+		]);
 	}
 
-	public function query($sql):void {
+	public function query($sql, $params = []): Database
+	{
 		$this->st = $this->connection->prepare($sql);
-		$this->st->execute();
+		$this->st->execute($params);
+		return $this;
 	}
+
+	public function all(): stdClass|array
+	{
+		return $this->st->fetchAll();
+	}
+
+	public function find(): stdClass
+	{
+		return $this->st->fetch();
+	}
+
+
 }
-
-//Etape de creation d'un namespace et d'une classe
-//Création de la classe avec un namespace
-//Ajout du namespace dans le fichier "composer.json"
-//Exécution de composer dump-autoload
-
-//on setup le constructeur
-//reference : https://www.php.net/manual/en/class.pdo
