@@ -1,8 +1,13 @@
 <?php
 
 use Controller\HomeController;
+use Controller\NotesController;
 
 $router->get('/', [HomeController::class,'index']);
+
+
+$router->get('/notes', [NotesController::class,'index']);
+
 
 //Voici notre liste de route possible
 //ici la seule route que nous avonse et '/'
