@@ -1,0 +1,16 @@
+{
+    "name": "blanchar/note-app-revision",
+    "autoload": {
+        "psr-4": {
+            "Blanchar\\NoteAppRevision\\": "src/",
+            "Core\\": "Core/"
+        }
+    },
+    "authors": [
+        {
+            "name": "blancharSengaVita",
+            "email": "blanchar.senga-vita@student.hepl.be"
+        }
+    ],
+    "require": {}
+}
