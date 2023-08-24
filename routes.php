@@ -1,4 +1,7 @@
 <?php
+
+use Controller\HomeController;
+
 $router->get('/', [HomeController::class,'index']);
 
 //Voici notre liste de route possible
