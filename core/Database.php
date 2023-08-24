@@ -13,7 +13,7 @@ class Database
 
 	public function __construct($file)
 	{
-		if (!$settings = parse_ini_file($file, TRUE)) throw new Exception('Unable to open ' . $file . '.');
+		if (!$settings = @parse_ini_file($file, TRUE)) throw new Exception('Unable to open ' . $file . '.');
 
 		$dsn = $settings['database']['driver'] .
 			':host=' . $settings['database']['host'] .
@@ -23,9 +23,9 @@ class Database
 		$this->connection = new PDO($dsn, $settings['database']['username'], $settings['database']['password']);
 	}
 
-	public function query($sql):Database {
+	public function query($sql):void {
 		$this->st = $this->connection->prepare($sql);
-		return $this;
+		$this->st->execute();
 	}
 }
 
