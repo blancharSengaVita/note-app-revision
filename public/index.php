@@ -15,5 +15,5 @@ $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $method = $_POST['_method'] ?? $_SERVER['REQUEST_METHOD'];
 $router->routeToController($uri, $method);
 
+//Dans le dd qu'on a fait ici il n y q qu'une seule route car nous en avons fait qu'une mais vous verrez qu'il y en aura plusieur en fur et mesures qu'on crée des vues
 
-//Mnt qu'on a notre uri, notre method et la method de notre class a appeler pour afficher la vue dans le tableau des routes (voir le dd*), on va essayer d'afficher la vue en fonction de la method et l'uri qu'on reçoit d'une requete
