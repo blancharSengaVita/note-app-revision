@@ -4,10 +4,12 @@ namespace Core;
 
 use Exception;
 use PDO;
+use PDOStatement;
 
 class Database
 {
 	public PDO $connection;
+	public PDOStatement $st;
 
 	public function __construct($file)
 	{
@@ -19,6 +21,11 @@ class Database
 			';dbname=' . $settings['database']['schema'];
 
 		$this->connection = new PDO($dsn, $settings['database']['username'], $settings['database']['password']);
+	}
+
+	public function query($sql):Database {
+		$this->st = $this->connection->prepare($sql);
+		return $this;
 	}
 }
 
