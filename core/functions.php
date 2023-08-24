@@ -11,3 +11,7 @@ function dd($value):void
 function base_path(string $path) : string{
 	return BASE_PATH . $path;
 }
+
+function views_path (string $path) {
+	require BASE_PATH . '/views/' . $path;
+}
