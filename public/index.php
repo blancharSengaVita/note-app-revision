@@ -6,7 +6,7 @@ define('BASE_PATH', __DIR__ . '/../');
 require BASE_PATH . 'core/functions.php';
 
 require base_path('vendor/autoload.php');
-define('ENV_FILE', require base_path('env.local.ini'));
+define('ENV_FILE', base_path('env.local.ini'));
 
 $router = new Router;
 require base_path('routes.php');
