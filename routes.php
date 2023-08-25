@@ -7,9 +7,10 @@ $router->get('/', [HomeController::class,'index']);
 
 
 $router->get('/notes', [NotesController::class,'index']);
-$router->get('/notes/note', [NotesController::class,'show']);
-$router->get('/notes/create', [NotesController::class,'create']);
+$router->get('/note', [NotesController::class,'show']);
+$router->get('/note/create', [NotesController::class,'create']);
 $router->post('/note', [NotesController::class,'store']);
+$router->get('/note/edit', [NotesController::class,'edit']);
 
 
 //Voici notre liste de route possible

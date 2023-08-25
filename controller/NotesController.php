@@ -84,5 +84,20 @@ class NotesController
 		}
 	}
 
+	public function edit(){
+		if(!isset($_GET['id'])){
+			Response::abort(Response::NOT_FOUND);
+		}
 
+		$id = (int)$_GET['id'];
+
+		$database = new Database(ENV_FILE);
+		$notes = $database->query(
+			'SELECT * FROM `notes` WHERE  `id` = :id',
+			[
+				'id' => $id,
+			]
+		)->findOrFail();
+		views_path('notes/edit.view.php', compact('notes'));
+	}
 }

@@ -9,8 +9,7 @@
 		<p class="errors"><?= $_SESSION['errors']['description'] ?></p>
 	<?php endif ?>
 
-	<textarea name="descri
-	ption" id="description" cols="30" rows="10"><?php if (!empty($_SESSION['old']['description'])): ?><?= $_SESSION['old']['description'] ?><?php endif ?></textarea>
+	<textarea name="description" id="description" cols="30" rows="10"><?php if (!empty($_SESSION['old']['description'])): ?><?= $_SESSION['old']['description'] ?><?php endif ?></textarea>
 
 	<button type="submit"> envoyer la note</button>
 </form>

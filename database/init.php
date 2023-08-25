@@ -1,6 +1,6 @@
 <?php
 
-use core\Database;
+use Core\Database;
 
 define('BASE_PATH', __DIR__ . '/../');
 require BASE_PATH . 'core/functions.php';
