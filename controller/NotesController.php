@@ -3,21 +3,22 @@
 namespace Controller;
 
 use Core\Database;
-use core\Response;
+use Core\Response;
+use Core\Validator;
 
 class NotesController
 {
 	public function index(): void
 	{
 		$database = new Database(ENV_FILE);
-		$notes  = $database->query('SELECT * FROM `notes`')->all();
+		$notes = $database->query('SELECT * FROM `notes`')->all();
 
 		views_path('notes/index.view.php', compact('notes'));
 	}
 
 	public function show(): void
 	{
-		if(!isset($_GET['id'])){
+		if (!isset($_GET['id'])) {
 			Response::abort(Response::METHOD_NOT_ALLOW);
 		}
 
@@ -25,7 +26,7 @@ class NotesController
 
 
 		$database = new Database(ENV_FILE);
-		$notes  = $database->query(
+		$notes = $database->query(
 			'SELECT * FROM `notes` WHERE `id` = :id',
 			[
 				'id' => $id,
@@ -40,9 +41,47 @@ class NotesController
 		views_path('notes/create.view.php');
 	}
 
+
+	private function checkDescriptionNote()
+	{
+		if (!isset($_POST['description'])) {
+			Response::abort(Response::METHOD_NOT_ALLOW);
+		}
+
+		$description = trim($_POST['description']);
+
+
+
+		if (!Validator::between($description)) {
+			$_SESSION['errors']['description'] = 'texte pas assez long mon gars';
+			$_SESSION['old']['description'] = $description;
+		}
+
+		return trim($description);
+	}
+
 	public function store(): void
 	{
-		header('location: notes/create');
+		$description = $this->checkDescriptionNote();
+
+
+		if (empty($_SESSION['errors'])){
+			$database = new Database(ENV_FILE);
+			$database->query(
+				'INSERT INTO `notes` (`user_id`, `description`)
+    VALUES
+        (:user_id,:description)',
+				[
+					'user_id' => 1,
+					'description' => $description,
+				]
+			);
+			header('location: notes');
+		} else {
+			$location = 'http://' . $_SERVER['HTTP_HOST'] . '/notes/create';
+			header("location: $location");
+			exit;
+		}
 	}
 
 

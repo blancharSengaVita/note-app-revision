@@ -5,8 +5,10 @@ use Core\Router;
 define('BASE_PATH', __DIR__ . '/../');
 require BASE_PATH . 'core/functions.php';
 
+session_start();
 require base_path('vendor/autoload.php');
 define('ENV_FILE', base_path('env.local.ini'));
+
 
 $router = new Router;
 require base_path('routes.php');

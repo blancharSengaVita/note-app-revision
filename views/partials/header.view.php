@@ -16,6 +16,10 @@
 		color: black;
 	}
 
+	.errors{
+		color: red;
+		font-size: 1.25rem;
+	}
 
 	ul{
 		margin: 0;
