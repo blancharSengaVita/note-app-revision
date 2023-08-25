@@ -1,5 +1,5 @@
 <?php
-
+//on va faire un crud https://laravel.com/docs/10.x/controllers#actions-handled-by-resource-controller
 namespace Controller;
 
 use Core\Database;
