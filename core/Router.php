@@ -16,18 +16,21 @@ class Router
 		$this->add($uri, 'POST', $controller);
 	}
 
-	public function add($uri, string $string, $controller)
+	public function patch($uri, $controller)
 	{
-		$this->routes[] = compact('uri', 'string', 'controller');
+		$this->add($uri, 'PATCH', $controller);
 	}
 
-
-
-	public function routeToController($uri, mixed $method)
+	public function add($uri, string $method, $controller)
 	{
-		$route = array_values(array_filter($this->routes, fn($r) => $r['uri'] === $uri && $r['method'] = strtoupper($method)));
+		$this->routes[] = compact('uri', 'method', 'controller');
+	}
 
-		if (!$route){
+	public function routeToController(string $uri, string $method)
+	{
+		$route = array_values(array_filter($this->routes, fn($r) => $r['uri'] === $uri && $r['method'] === strtoupper($method)));
+
+		if (empty($route)){
 			Response::abort(Response::BAD_REQUEST);
 		}
 

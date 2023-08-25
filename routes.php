@@ -11,6 +11,7 @@ $router->get('/note', [NotesController::class,'show']);
 $router->get('/note/create', [NotesController::class,'create']);
 $router->post('/note', [NotesController::class,'store']);
 $router->get('/note/edit', [NotesController::class,'edit']);
+$router->patch('/note', [NotesController::class,'update']);
 
 
 //Voici notre liste de route possible

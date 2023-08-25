@@ -84,13 +84,13 @@ class NotesController
 		}
 	}
 
-	public function edit(){
+	public function edit()
+	{
 		if(!isset($_GET['id'])){
 			Response::abort(Response::NOT_FOUND);
 		}
 
 		$id = (int)$_GET['id'];
-
 		$database = new Database(ENV_FILE);
 		$notes = $database->query(
 			'SELECT * FROM `notes` WHERE  `id` = :id',
@@ -99,5 +99,29 @@ class NotesController
 			]
 		)->findOrFail();
 		views_path('notes/edit.view.php', compact('notes'));
+	}
+
+	public function update(){
+		if (!isset($_POST['id'])){
+			Response::abort(Response::METHOD_NOT_ALLOW);
+		}
+
+		$id = (int)$_POST['id'];
+		$description = $this->checkDescriptionNote();
+
+		if(empty($_SESSION['errors'])){
+			$database = new Database(ENV_FILE);
+			$database->query(
+				'UPDATE `notes` SET `description` = :description  WHERE `id` = :id',
+				[
+					'id' => $id,
+					'description' => $description,
+				]
+			);
+			$location = '/note?id=' . $id;
+		} else {
+			$location = 'note/edit?id=' . $id;
+		}
+		header("location: $location");
 	}
 }
