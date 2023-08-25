@@ -35,5 +35,15 @@ class NotesController
 		views_path('notes/show.view.php', compact('notes'));
 	}
 
+	public function create(): void
+	{
+		views_path('notes/create.view.php');
+	}
+
+	public function store(): void
+	{
+		header('location: notes/create');
+	}
+
 
 }

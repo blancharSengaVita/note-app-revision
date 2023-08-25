@@ -11,10 +11,17 @@ class Router
 		$this->add($uri, 'GET', $controller);
 	}
 
+	public function post($uri, $controller)
+	{
+		$this->add($uri, 'POST', $controller);
+	}
+
 	public function add($uri, string $string, $controller)
 	{
 		$this->routes[] = compact('uri', 'string', 'controller');
 	}
+
+
 
 	public function routeToController($uri, mixed $method)
 	{
