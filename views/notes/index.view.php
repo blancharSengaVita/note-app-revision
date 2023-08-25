@@ -4,7 +4,7 @@
 	<ul>
 		<?php foreach ($notes as $note): ?>
 			<li>
-				<a href="https://http://note-app-revision.localhost/notes/note?id=<?= $note->id ?>"><?= ($note->description) ?></a>
+				<a href="http://note-app-revision.localhost/notes/note?id=<?= $note->id ?>"><?= ($note->description) ?></a>
 			</li>
 		<?php endforeach; ?>
 	</ul>

@@ -7,6 +7,7 @@ $router->get('/', [HomeController::class,'index']);
 
 
 $router->get('/notes', [NotesController::class,'index']);
+$router->get('/notes/note', [NotesController::class,'show']);
 
 
 //Voici notre liste de route possible

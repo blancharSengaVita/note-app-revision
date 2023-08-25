@@ -3,6 +3,7 @@
 namespace Controller;
 
 use Core\Database;
+use core\Response;
 
 class NotesController
 {
@@ -12,5 +13,25 @@ class NotesController
 		$notes  = $database->query('SELECT * FROM `notes`')->all();
 
 		views_path('notes/index.view.php', compact('notes'));
+	}
+
+	public function show(): void
+	{
+		if(!isset($_GET['id'])){
+			Response::abort(Response::METHOD_NOT_ALLOW);
+		}
+
+		$id = (int)$_GET['id'];
+
+
+		$database = new Database(ENV_FILE);
+		$notes  = $database->query(
+			'SELECT * FROM `notes` WHERE `id` = :id',
+			[
+				'id' => $id,
+			]
+		)->find();
+
+		views_path('notes/show.view.php', compact('notes'));
 	}
 }
