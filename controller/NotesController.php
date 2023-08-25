@@ -124,4 +124,21 @@ class NotesController
 		}
 		header("location: $location");
 	}
+
+	public function destroy(){
+		if (!isset($_POST['id'])){
+			Response::abort();
+		}
+
+		$id = (int)$_POST['id'];
+
+		$database = new Database(ENV_FILE);
+		$database->query(
+			'DELETE FROM `notes` WHERE id = :id',
+			[
+				'id' => $id,
+			]
+		);
+		header('location: /notes');
+	}
 }

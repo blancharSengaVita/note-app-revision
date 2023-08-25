@@ -26,6 +26,11 @@ class Router
 		$this->routes[] = compact('uri', 'method', 'controller');
 	}
 
+	public function delete($uri, $controller)
+	{
+		$this->add($uri, 'DELETE', $controller);
+	}
+
 	public function routeToController(string $uri, string $method)
 	{
 		$route = array_values(array_filter($this->routes, fn($r) => $r['uri'] === $uri && $r['method'] === strtoupper($method)));
@@ -38,7 +43,6 @@ class Router
 		$controllerMethod = $route[0]['controller'][1];
 		call_user_func([$controller, $controllerMethod]);
 	}
-
 }
 
 
