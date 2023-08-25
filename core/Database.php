@@ -45,5 +45,16 @@ class Database
 		return $this->st->fetch();
 	}
 
+	public function findOrFail(): stdClass
+	{
+		$row = $this->st->fetch();
+
+		if(!$row){
+			Response::abort(Response::METHOD_NOT_ALLOW);
+		}
+
+		return $row;
+	}
+
 
 }

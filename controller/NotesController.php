@@ -30,8 +30,10 @@ class NotesController
 			[
 				'id' => $id,
 			]
-		)->find();
+		)->findOrFail();
 
 		views_path('notes/show.view.php', compact('notes'));
 	}
+
+
 }
