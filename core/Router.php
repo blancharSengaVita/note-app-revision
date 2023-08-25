@@ -21,7 +21,7 @@ class Router
 		$route = array_values(array_filter($this->routes, fn($r) => $r['uri'] === $uri && $r['method'] = strtoupper($method)));
 
 		if (!$route){
-			Response::abort();
+			Response::abort(Response::BAD_REQUEST);
 		}
 
 		$controller = new $route[0]['controller'][0]();
