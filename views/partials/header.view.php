@@ -1,14 +1,19 @@
 <!doctype html>
 <html lang="fr">
 <style>
-	body{
+	body {
 		font-family: Mukta;
 	}
-	a{
+
+	p {
+		margin: 0;
+	}
+
+	a {
 		color: black;
 	}
 
-	a:hover{
+	a:hover {
 		font-weight: 900;
 	}
 
@@ -16,26 +21,28 @@
 		color: black;
 	}
 
-	.errors{
+	.errors {
 		color: red;
 		font-size: 1.25rem;
 	}
 
-	ul{
+	ul {
 		margin: 0;
 	}
 
-	h2{
+	h2 {
 		margin-top: 0;
 	}
-	li{
+
+	li {
 		list-style-type: none
 	}
+
 	body {
 		background-color: antiquewhite;
 	}
 
-	header{
+	header {
 		background-color: skyblue;
 		width: 100%;
 	}
@@ -53,16 +60,22 @@
 
 		</h2>
 		<ul style="display: flex">
-			<li style="margin-right:2rem" ><a href="/">accueil</a></li>
-			<li><a style="margin-right:2rem" href="/notes">Voir les notes</a></li>
-			<li><a style="margin-right:2rem" href="/register">S'incrire</a></li>
-			<li><a style="margin-right:2rem" href="/login">Se connecter</a></li>
-			<li>
-				<form action="/logout" method="post">
-					<input type="submit" value="se deconnecter">
-					<input type="hidden" name="_method" value="delete">
-				</form>
-			</li>
+			<li style="margin-right:2rem"><a href="/">accueil</a></li>
+			<?php if (isset($_SESSION['user'])): ?>
+				<li><a style="margin-right:2rem" href="/notes">Voir les notes</a></li>
+
+				<li style="margin-right:2rem"><p> <?= $_SESSION['user']->name; ?></p></li>
+				<li>
+					<form action="/logout" method="post">
+						<input type="submit" value="se deconnecter">
+						<input type="hidden" name="_method" value="delete">
+					</form>
+				</li>
+			<?php else: ?>
+				<li><a style="margin-right:2rem" href="/register">S'incrire</a></li>
+				<li><a style="margin-right:2rem" href="/login">Se connecter</a></li>
+			<?php endif; ?>
+
 		</ul>
 	</nav>
 </header>
