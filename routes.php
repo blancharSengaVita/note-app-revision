@@ -22,6 +22,7 @@ $router->post('/register',[UserAccountsController::class, 'store']);
 
 $router->get('/login', [UserSessionsController::class, 'create']);
 $router->post('/login', [UserSessionsController::class, 'store']);
+$router->delete('/logout', [UserSessionsController::class, 'destroy']);
 
 
 //Voici notre liste de route possible

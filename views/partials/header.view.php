@@ -56,7 +56,13 @@
 			<li style="margin-right:2rem" ><a href="/">accueil</a></li>
 			<li><a style="margin-right:2rem" href="/notes">Voir les notes</a></li>
 			<li><a style="margin-right:2rem" href="/register">S'incrire</a></li>
-			<li><a href="/login">Se connecter</a></li>
+			<li><a style="margin-right:2rem" href="/login">Se connecter</a></li>
+			<li>
+				<form action="/logout" method="post">
+					<input type="submit" value="se deconnecter">
+					<input type="hidden" name="_method" value="delete">
+				</form>
+			</li>
 		</ul>
 	</nav>
 </header>
