@@ -40,7 +40,7 @@ class Database
 		return $this->st->fetchAll();
 	}
 
-	public function find(): stdClass
+	public function find(): stdClass | bool
 	{
 		return $this->st->fetch();
 	}

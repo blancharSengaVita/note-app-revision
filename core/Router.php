@@ -35,6 +35,8 @@ class Router
 	{
 		$route = array_values(array_filter($this->routes, fn($r) => $r['uri'] === $uri && $r['method'] === strtoupper($method)));
 
+//		dd($route);
+
 		if (empty($route)){
 			Response::abort(Response::BAD_REQUEST);
 		}

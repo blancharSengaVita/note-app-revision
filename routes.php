@@ -17,6 +17,7 @@ $router->delete('/note', [NotesController::class,'destroy']);
 
 
 $router->get('/register',[UserAccountsController::class, 'create']);
+$router->post('/register',[UserAccountsController::class, 'store']);
 
 
 //Voici notre liste de route possible
