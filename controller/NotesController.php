@@ -13,7 +13,7 @@ class NotesController
 		$database = new Database(ENV_FILE);
 		$notes = $database->query('SELECT * FROM `notes`')->all();
 
-		views_path('notes/create.view.php', compact('notes'));
+		views_path('notes/index.view.php', compact('notes'));
 	}
 
 	public function show(): void

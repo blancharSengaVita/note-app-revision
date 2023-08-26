@@ -21,6 +21,7 @@ $router->get('/register',[UserAccountsController::class, 'create']);
 $router->post('/register',[UserAccountsController::class, 'store']);
 
 $router->get('/login', [UserSessionsController::class, 'create']);
+$router->post('/login', [UserSessionsController::class, 'store']);
 
 
 //Voici notre liste de route possible
