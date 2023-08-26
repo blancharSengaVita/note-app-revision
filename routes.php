@@ -3,6 +3,7 @@
 use Controller\HomeController;
 use Controller\NotesController;
 use Controller\UserAccountsController;
+use Controller\UserSessionsController;
 
 $router->get('/', [HomeController::class,'index']);
 
@@ -18,6 +19,8 @@ $router->delete('/note', [NotesController::class,'destroy']);
 
 $router->get('/register',[UserAccountsController::class, 'create']);
 $router->post('/register',[UserAccountsController::class, 'store']);
+
+$router->get('/login', [UserSessionsController::class, 'create']);
 
 
 //Voici notre liste de route possible

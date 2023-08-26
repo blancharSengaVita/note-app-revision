@@ -55,7 +55,8 @@
 		<ul style="display: flex">
 			<li style="margin-right:2rem" ><a href="/">accueil</a></li>
 			<li><a style="margin-right:2rem" href="/notes">Voir les notes</a></li>
-			<li><a href="/register">S'incrire</a></li>
+			<li><a style="margin-right:2rem" href="/register">S'incrire</a></li>
+			<li><a href="/login">Se connecter</a></li>
 		</ul>
 	</nav>
 </header>
