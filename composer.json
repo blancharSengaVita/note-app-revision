@@ -4,6 +4,7 @@
         "psr-4": {
             "Blanchar\\NoteAppRevision\\": "src/",
             "Core\\": "Core/",
+            "Core\\Middleware\\": "Core/Middleware",
             "Controller\\": "Controller/"
         }
     },
@@ -13,5 +14,7 @@
             "email": "blanchar.senga-vita@student.hepl.be"
         }
     ],
-    "require": {}
+    "require": {
+        "nesbot/carbon": "^2.69"
+    }
 }

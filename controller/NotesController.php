@@ -8,6 +8,15 @@ use Core\Validator;
 
 class NotesController
 {
+
+	//la prochaine fois faire la Sessions dés le début
+	public \stdClass $user;
+
+	public function __construct()
+	{
+		$this->user = $_SESSION['user'];
+	}
+
 	public function index(): void
 	{
 		$database = new Database(ENV_FILE);
