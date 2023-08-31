@@ -36,4 +36,21 @@ class Validator
 			]
 		)->find();
 	}
+
+	public static function image(mixed $tmp_path)
+	{
+		$valid_types = [
+			'image/jpg',
+			'image/jpeg',
+			'image/png',
+			'image/gif',
+		];
+		//on crée une instance finfo qui va retrouner le type mime qu'on met dans la variable $finfo
+		//allez voir finfo file dans la doc
+		$finfo = finfo_open(FILEINFO_MIME_TYPE);
+		$type = finfo_file($finfo,$tmp_path);
+		finfo_close($finfo);
+
+		return in_array($type, $valid_types);
+	}
 }

@@ -11,9 +11,11 @@ class Middleware
 	//et on les associe a une classe
 
 	//les classes devront justes rediriger les vers une page
+	//on ajoute le middleware csrf
 	const Map = [
 		'guest' => Guest::class,
 		'authenticated' => Authenticated::class,
+		'csrf' => CSRF::class,
 	];
 
 	//la fonction regarder si le nom du middleware qu'on
@@ -27,6 +29,5 @@ class Middleware
 		}
 		$middleware = self::Map[$name];
 		 (new $middleware)->handle();
-
 	}
 }

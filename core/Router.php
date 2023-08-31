@@ -43,7 +43,6 @@ class Router
 		return $this;
 	}
 
-
 	//on va créer une fonction only qui va ajouté pour chaque route la valeur de leur
 	//middleware (c'est dans l'argument)
 	public function only($value){
@@ -51,24 +50,30 @@ class Router
 		return $this;
 	}
 
+	//la methode ajoute le nom du middleware dans le tableau à tous ceux qui ont la méthode
+	public function csrf()
+	{
+		$this->routes[array_key_last($this->routes)]['middleware'][] = 'csrf';
+		return $this;
+	}
 
 	public function routeToController(string $uri, string $method)
 	{
 		$route = array_values(array_filter($this->routes, fn($r) => $r['uri'] === $uri && $r['method'] === strtoupper($method)));
 
-		//si il n'y a pas de middleware
-		//on va demander à la classe Middleware
-		//de resoudre ce probleme
-		//et si elle retourne une expection
-		//on l'attrape
-		//et on l'affiche
+
 		if (!empty($route[0]['middleware'])){
 			try{
-				Middleware::resolve($route[0]['middleware'][0]);
+				//on fait une boucle qui demande de résoudre tous les middleware
+				foreach ($route[0]['middleware'] as $middleware){
+					Middleware::resolve($middleware);
+				}
+
 			}catch (Exception $e){
 				throw new Exception($e);
 			}
 		}
+
 
 		if (empty($route)){
 			Response::abort(Response::BAD_REQUEST);

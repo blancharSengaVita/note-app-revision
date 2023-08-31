@@ -15,7 +15,9 @@ $router->get('/', [HomeController::class,'index']);
 $router->get('/notes', [NotesController::class,'index'])->only('authenticated');
 $router->get('/note', [NotesController::class,'show'])->only('authenticated');
 $router->get('/note/create', [NotesController::class,'create'])->only('authenticated');
-$router->post('/note', [NotesController::class,'store'])->only('authenticated');
+
+//on ajoute une methode le csrf token pour la partie ou on veut l'installer
+$router->post('/note', [NotesController::class,'store'])->only('authenticated')->csrf();
 $router->get('/note/edit', [NotesController::class,'edit'])->only('authenticated');
 $router->patch('/note', [NotesController::class,'update'])->only('authenticated');
 $router->delete('/note', [NotesController::class,'destroy'])->only('authenticated');
@@ -24,9 +26,9 @@ $router->delete('/note', [NotesController::class,'destroy'])->only('authenticate
 $router->get('/register',[UserAccountsController::class, 'create'])->only('guest');
 $router->post('/register',[UserAccountsController::class, 'store'])->only('guest');
 
-$router->get('/login', [UserSessionsController::class, 'create'])->only('authenticated');
-$router->post('/login', [UserSessionsController::class, 'store'])->only('authenticated');
-$router->delete('/logout', [UserSessionsController::class, 'destroy'])->only('authenticated');
+$router->get('/login', [UserSessionsController::class, 'create'])->only('guest');
+$router->post('/login', [UserSessionsController::class, 'store'])->only('guest');
+$router->delete('/logout', [UserSessionsController::class, 'destroy'])->only('guest');
 
 $router->get('/carbon', [CarbonTrainingController::class, 'index']);
 
