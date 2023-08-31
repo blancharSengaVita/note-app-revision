@@ -1,10 +1,14 @@
 <?php
-//setcookie('lang', 'fr');
+
+
+
 use Core\Router;
 
 define('BASE_PATH', __DIR__ . '/../');
 require BASE_PATH . 'core/functions.php';
 define('NOTES_THUMBS_WIDTHS', require base_path('config/files.php'));
+
+
 
 session_start();
 require base_path('vendor/autoload.php');

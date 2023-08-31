@@ -57,8 +57,11 @@ class Router
 		return $this;
 	}
 
+
 	public function routeToController(string $uri, string $method)
 	{
+//		dd($this->routes);
+
 		$route = array_values(array_filter($this->routes, fn($r) => $r['uri'] === $uri && $r['method'] === strtoupper($method)));
 
 
@@ -73,11 +76,12 @@ class Router
 				throw new Exception($e);
 			}
 		}
-
+//		dd($route);
 
 		if (empty($route)){
 			Response::abort(Response::BAD_REQUEST);
 		}
+
 
 
 		$controller = new $route[0]['controller'][0]();

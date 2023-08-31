@@ -1,8 +1,10 @@
 <?php
 
 use Controller\CarbonTrainingController;
+use Controller\CookiePlayground;
 use Controller\HomeController;
 use Controller\NotesController;
+use Controller\NsfwController;
 use Controller\UserAccountsController;
 use Controller\UserSessionsController;
 
@@ -31,6 +33,10 @@ $router->post('/login', [UserSessionsController::class, 'store'])->only('guest')
 $router->delete('/logout', [UserSessionsController::class, 'destroy'])->only('guest');
 
 $router->get('/carbon', [CarbonTrainingController::class, 'index']);
+
+$router->get('/cookie', [CookiePlayground::class, 'index']);
+$router->delete('/deconnexion', [CookiePlayground::class, 'destroy']);
+$router->get('/nsfw', [NsfwController::class, 'index']);
 
 
 //Voici notre liste de route possible
